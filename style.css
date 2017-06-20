@@ -1,13 +1,19 @@
 body {
   width: 980px;
+  margin: 50px;
+}
+div.container {
+  margin: auto;
+
 }
 div {
   margin: 80px;
 }
+
 header {
   background-color: #CAC3C4;
-  padding-bottom: 80px;
-  padding-top: 80px;
+  padding-bottom: 20px;
+  padding-top: 20px;
 }
 h1 {
   font-family: 'Alan';
