@@ -1,43 +1,37 @@
 'use stric';
-var randomImage = [];
-var clickPerImage = [];
-function userClicks(image, numClick){
+// var randomImage = [nameOfTheImages];
+// var clickPerImage = [];
+// function userClicks(image, numClick){
+//
+// }
 
-}
-
-var container = document.getElementById('stooges');
+var container = document.getElementById('randomImage');
 container.addEventListener('click', handleClick);
 
-var larryClicks = 0;
-var curlyClicks = 0;
-var moeClicks = 0;
-var iggyClicks = 0;
+var oneClicks = 0;
+var twoClicks = 0;
+var threeClicks = 0;
 
 function handleClick(event) {
   console.log(event.target);
   //to track the number of click
-  if (event.target.id === 'stooges') {
+  if (event.target.id === 'randomImage') {
     alert('You had just one job Click in the h2 but not the sections');
   }
-  var larry = document.getElementById('larry');
-  var curly = document.getElementById('curly');
-  var moe = document.getElementById('moe');
-  var iggy = document.getElementById('iggy');
+  var one = document.getElementById('one');
+  var two = document.getElementById('two');
+  var three = document.getElementById('three');
 
-  if (event.id.target.id === 'larry') {
-    larryClicks += 1;
-    larry.textContent = 'larry have been clicked' + larryClicks + 'times';
+  if (event.target.id === 'one') {
+    oneClicks += 1;
+    one.textContent = 'One have been clicked ' + oneClicks + ' times.';
   }
-  if (event.id.target.id === 'larry') {
-    curlyClicks += 1;
-    console.log('larry have been clicked' + curlyClicks + 'times');
+  if (event.target.id === 'two') {
+    twoClicks += 1;
+    two.textContent = 'Two have been clicked ' + twoClicks + ' times.';
   }
-  if (event.id.target.id === 'larry') {
-    moeClicks += 1;
-    console.log('larry have been clicked' + moeClicks + 'times');
-  }
-  if (event.id.target.id === 'larry') {
-    iggyClicks += 1;
-    console.log('larry have been clicked' + iggyClicks + 'times');
+  if (event.target.id === 'three') {
+    threeClicks += 1;
+    three.textContent = 'Three have been clicked ' + threeClicks + ' times.';
   }
 }
