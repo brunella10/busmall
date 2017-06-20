@@ -1,16 +1,33 @@
 'use stric';
-// var randomImage = [nameOfTheImages];
-// var clickPerImage = [];
-// function userClicks(imageNumber, imageName, numClick, timesDisplayed){
-// this.imageNumber = imageNumber;
-// this.imageName = imageName;
-// this.numClick = numClick;
-// this.timesDisplayed = timesDisplayed;
-// this.totalImageDisplayed = [];
-// this.heigherClicked = [];
-// clickPerImage.push(this);
+var randomImage = [nameOfTheImages];
+var clickPerImage = []; //totalclicksperimage
+var allImage = [];//all products img
+var lastOne =[];//last image showed
+var newOne =[];//rest of image to be showed
+var imageDisplay = document.getElementById('randomImage'); //image container to display
+//product object
+function userClicks(imageNumber, imageName, numClick, timesDisplayed){
+this.imageNumber = imageNumber; //information list image
+this.imageName = imageName; //data
+this.numClick = numClick;//how many time was clicked
+this.timesDisplayed = timesDisplayed;// how many times did the user saw rhe image
+this.totalImageDisplayed = [];//how many image was displayed
+this.heigherClicked = [];//most clicked image
+clickPerImage.push(this);
+}
+
 //
-// }
+function heigherClicked() {
+  for (var i = 0; i < allImage.lengh; i++) {
+    if (allImage[i].timesDisplayed === 0) {
+      allImage[i].heigherClicked = 'NA';
+    } else {
+      allImage[i].heigherClicked = allImage[i].numClick /allImage.timesDisplayed
+    }
+  }
+}
+
+
 //from here event
 var container = document.getElementById('randomImage');
 container.addEventListener('click', handleClick);
