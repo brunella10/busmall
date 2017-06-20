@@ -1,10 +1,17 @@
 'use stric';
 // var randomImage = [nameOfTheImages];
 // var clickPerImage = [];
-// function userClicks(image, numClick){
+// function userClicks(imageNumber, imageName, numClick, timesDisplayed){
+// this.imageNumber = imageNumber;
+// this.imageName = imageName;
+// this.numClick = numClick;
+// this.timesDisplayed = timesDisplayed;
+// this.totalImageDisplayed = [];
+// this.heigherClicked = [];
+// clickPerImage.push(this);
 //
 // }
-
+//from here event
 var container = document.getElementById('randomImage');
 container.addEventListener('click', handleClick);
 
@@ -33,5 +40,21 @@ function handleClick(event) {
   if (event.target.id === 'three') {
     threeClicks += 1;
     three.textContent = 'Three have been clicked ' + threeClicks + ' times.';
+  }
+
+//from here random images
+var randomPic = Math.floor(Math.random() * 20);
+function randomImg() {
+
+  return Math.random();
+}
+//from here 25 clicks
+function twentyFiveClicks() {
+  var clicksPerUser = 25;
+  var option = 25;
+
+  while (clicksPerUser > 0) {
+    if ()
+
   }
 }
