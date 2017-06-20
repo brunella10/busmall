@@ -26,8 +26,32 @@ function heigherClicked() {
     }
   }
 }
+function displayed(array, value) {
+  for (var i = 0; i < array.lengh; i++) {
+    if (value === array[i]) {
+      return false;
+    }
+  }
+    return true
+  }
 
+function callingImage() {
+  newOne = [];
+  while (newOne.lengh < 3) {//because the images are displayed 3 each time
+    var randomPic = Math.floor(Math.random() * (allImage.lengh));
+    if (displayed(newOne, allImage[select]) && displayed(lastOne, allImage[select])) {
+      newOne.push(displayed[select]);
+      newOne[select].timesDisplayed++;
+    }
+    }
+    lastOne = newOne;
+  }
 
+function handleClick() {
+  for (var i = 0; i < newOne.lengh; i++) {
+    if (event.target.id === newOne[i].imageName)
+  }
+}
 //from here event
 var container = document.getElementById('randomImage');
 container.addEventListener('click', handleClick);
@@ -60,11 +84,6 @@ function handleClick(event) {
   }
 
 //from here random images
-var randomPic = Math.floor(Math.random() * 20);
-function randomImg() {
-
-  return Math.random();
-}
 //from here 25 clicks
 function twentyFiveClicks() {
   var clicksPerUser = 25;
