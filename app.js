@@ -1,58 +1,70 @@
 'use stric';
-var randomImage = [nameOfTheImages];
-var clickPerImage = []; //totalclicksperimage
-var allImage = [];//all products img
-var lastOne =[];//last image showed
-var newOne =[];//rest of image to be showed
-var imageDisplay = document.getElementById('randomImage'); //image container to display
-//product object
-function userClicks(imageNumber, imageName, numClick, timesDisplayed){
-this.imageNumber = imageNumber; //information list image
-this.imageName = imageName; //data
-this.numClick = numClick;//how many time was clicked
-this.timesDisplayed = timesDisplayed;// how many times did the user saw rhe image
-this.totalImageDisplayed = [];//how many image was displayed
-this.heigherClicked = [];//most clicked image
-clickPerImage.push(this);
+var imageList = [];
+var imageDisplayed = [];
+var imageToDisplay = [];
+// image name, time displayed, number of click per image
+function userClicks(imageNumber, imageName) {
+  this.imageNumber = imageNumber; //information list image
+  this.imageName = imageName; //data
+  this.numClick = 0;//how many time was clicked
+  this.numDisplay = 0;// how many times did the user saw rhe image
+  clickPerImage.push(this);
 }
 
+// random image generator
+function getRandomImage(imageList){
+  return Math.floor(Math.random() * (imageList.length - 0)) + 0;
+}
+
+function getImageToDisplay() {
+  imageToDisplay = [];
+  while (imageToDisplay.length < 3) {
+    var randomImageNum = getRandomImage(imageList);
+    if(!checkNumberInArray(randomImageNum, imageDisplayed) && !checkNumberInArray(randomImageNum, imageToDisplay)) {
+      imageToDisplay.push(randomImageNum);
+      imageList[randomImageNum].numDisplay++;
+    }
+  }
+  imageDisplayed = imageToDisplay;
+}
+
+function checkNumberInArray(num, numbers){
+  for (var i = 0; i < numbers.length; i++) {
+    if (num === numbers[i]) {
+      return true;
+    }
+  }
+  return false;
+}
+
+// loop of 25
+// function random 0 20
+// event and handleClick
+//   increase image select counter
+//   call 3 more random image.
+
+//  display stats
+
+// var randomImage = [imageName];
+// var clickPerImage = []; //totalclicksperimage
+// var allImage = []; //all products img
+// var lastOne = []; //last image showed
+// var newOne = []; //rest of image to be showed
+// var imageDisplay = document.getElementById('randomImage'); //image container to display
+// //product object
 //
-function heigherClicked() {
-  for (var i = 0; i < allImage.lengh; i++) {
-    if (allImage[i].timesDisplayed === 0) {
-      allImage[i].heigherClicked = 'NA';
-    } else {
-      allImage[i].heigherClicked = allImage[i].numClick /allImage.timesDisplayed
-    }
-  }
-}
-function displayed(array, value) {
-  for (var i = 0; i < array.lengh; i++) {
-    if (value === array[i]) {
-      return false;
-    }
-  }
-    return true
-  }
-
-function callingImage() {
-  newOne = [];
-  while (newOne.lengh < 3) {//because the images are displayed 3 each time
-    var randomPic = Math.floor(Math.random() * (allImage.lengh));
-    if (displayed(newOne, allImage[select]) && displayed(lastOne, allImage[select])) {
-      newOne.push(displayed[select]);
-      newOne[select].timesDisplayed++;
-    }
-    }
-    lastOne = newOne;
-  }
-
-function handleClick() {
-  for (var i = 0; i < newOne.lengh; i++) {
-    if (event.target.id === newOne[i].imageName)
-  }
-}
-//from here event
+// //
+//
+// function handleClick() {
+//   for (var i = 0; i < newOne.lengh; i++) {
+//     if (event.target.id === newOne[i].imageName) {
+//       newOne[i].numClick++;
+//       clickPerImage++;
+//       var
+//     }
+//   }
+// }incomplete function
+// from here event
 var container = document.getElementById('randomImage');
 container.addEventListener('click', handleClick);
 
@@ -82,15 +94,18 @@ function handleClick(event) {
     threeClicks += 1;
     three.textContent = 'Three have been clicked ' + threeClicks + ' times.';
   }
-
-//from here random images
-//from here 25 clicks
-function twentyFiveClicks() {
-  var clicksPerUser = 25;
-  var option = 25;
-
-  while (clicksPerUser > 0) {
-    if ()
-
-  }
 }
+// from here random images
+// from here 25 clicks
+// function twentyFiveClicks() {
+//   var clicksPerUser = 25;
+//   var option = 25;
+//
+//   while (clicksPerUser > 0) {
+//     if ()
+//
+//   }
+// }
+// new product()
+// render();
+// imageDisplay.addEventListener(click,handleClick);
