@@ -7,7 +7,7 @@ function userClicks(imageNumber, imageName) {
   this.imageNumber = imageNumber; //information list image
   this.imageName = imageName; //data
   this.numClick = 0;//how many time was clicked
-  this.numDisplay = 0;// how many times did the user saw rhe image
+  this.numDisplay = 0;// how many times did the user saw the image
   clickPerImage.push(this);
 }
 
@@ -37,50 +37,26 @@ function checkNumberInArray(num, numbers){
   return false;
 }
 
-// loop of 25
-// function random 0 20
-// event and handleClick
-//   increase image select counter
-//   call 3 more random image.
-
-//  display stats
-
-// var randomImage = [imageName];
-// var clickPerImage = []; //totalclicksperimage
-// var allImage = []; //all products img
-// var lastOne = []; //last image showed
-// var newOne = []; //rest of image to be showed
-// var imageDisplay = document.getElementById('randomImage'); //image container to display
-// //product object
-//
-// //
-//
-// function handleClick() {
-//   for (var i = 0; i < newOne.lengh; i++) {
-//     if (event.target.id === newOne[i].imageName) {
-//       newOne[i].numClick++;
-//       clickPerImage++;
-//       var
-//     }
-//   }
-// }incomplete function
-// from here event
+function render(){
+  getRandomImage();
+  for (var i = 0; i < imageToDisplay.length; i++) {
+    var imgEl = document.createElement('pictures');
+    imgEl.src = imageToDisplay[i].imageNumber;
+    imgEl.id = imageToDisplay[i].imageName;
+    randomImage.appendChild(imgEl);
+  }
+}
 var container = document.getElementById('randomImage');
 container.addEventListener('click', handleClick);
 
 var oneClicks = 0;
-var twoClicks = 0;
-var threeClicks = 0;
 
 function handleClick(event) {
   console.log(event.target);
   //to track the number of click
   if (event.target.id === 'randomImage') {
-    alert('You had just one job Click in the h2 but not the sections');
   }
-  var one = document.getElementById('one');
-  var two = document.getElementById('two');
-  var three = document.getElementById('three');
+  var one = document.getElementById('randomImage');
 
   if (event.target.id === 'one') {
     oneClicks += 1;
@@ -95,6 +71,26 @@ function handleClick(event) {
     three.textContent = 'Three have been clicked ' + threeClicks + ' times.';
   }
 }
+
+new userClicks ('banana', 'banana.jpg');
+new userClicks ('bathroom', 'bathroom.jpg');
+new userClicks ('boots', 'boots.jpg');
+new userClicks ('breakfast', 'breakfast.jpg');
+new userClicks ('bubblegum', 'bubblegum.jpg');
+new userClicks ('chair', 'chair.jpg');
+new userClicks ('cthulhu', 'cthulhu.jpg');
+new userClicks ('dog_duck', 'dog-duck.jpg');
+new userClicks ('dragon', 'dragon.jpg');
+new userClicks ('pen', 'pen.jpg');
+new userClicks ('pet_sweep', '');
+new userClicks ('scissors', 'scissors.jpg');
+new userClicks ('shark', 'shark.jpg');
+new userClicks ('sweep_baby', 'sweep.jpg');
+new userClicks ('tauntaun', 'tauntaun.jpg');
+new userClicks ('unicor', 'unicor.jpg');
+new userClicks ('usb', 'usb.jpg');
+new userClicks ('water_can', 'water-can.jpg');
+new userClicks ('wine_glass', 'wine-glass.jpg');
 // from here random images
 // from here 25 clicks
 // function twentyFiveClicks() {
@@ -106,6 +102,6 @@ function handleClick(event) {
 //
 //   }
 // }
-// new product()
+// new imageList()
 // render();
 // imageDisplay.addEventListener(click,handleClick);
