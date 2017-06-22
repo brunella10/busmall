@@ -107,6 +107,7 @@ function handleClick(event) {  // to track the number of click
         secEl.appendChild(ulEl);
         container.appendChild(secEl);
         console.log('bye');
+        chartResult();
       } else {
         render();
       }
@@ -114,16 +115,17 @@ function handleClick(event) {  // to track the number of click
   }
 }
 
-function chartResutl() {
+function chartResult() {
+  console.log('chartResult');
   var result = document.getElementById('resultChart');
   result.style.display = 'bars';
   container.parentNode.removeChild(container);
   var ctx = document.getElementById(myChart);
   var chartL = [];
   var chartD = [];
-  for (var i = 0; i < imageDisplay.length; i++) {
-    chartL.push(imageDisplay[i].imageName);
-    chartD.push(imageDisplay[i].numClick);
+  for (var i = 0; i < imageToDisplay.length; i++) {
+    chartL.push(imageToDisplay[i].imageName);
+    chartD.push(imageToDisplay[i].numClick);
   }
   var newChart = new Chart(ctx, {
     type: 'polarArea',
