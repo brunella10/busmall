@@ -47,7 +47,6 @@ function getImageToDisplay() {
     var randomImageNum = getRandomImage(imageList);
     if(!checkNumberInArray(randomImageNum, imageDisplayed) && !checkNumberInArray(randomImageNum, imageToDisplay)) {
       imageToDisplay.push(randomImageNum);
-      console.log('Second imageToDisplay: ', imageToDisplay);
       imageList[randomImageNum].numDisplay++;
     }
   }
@@ -70,7 +69,6 @@ function render(){
     imgEl.src = imageList[imageToDisplay[i]].imageNumber;
     imgEl.id = imageList[imageToDisplay[i]].imageName;
     container.appendChild(imgEl);
-    console.log(imageList[imageToDisplay[i]].imageName);
   }
 }
 
@@ -78,13 +76,9 @@ render();
 
 var oneClicks = 0;
 
-function handleClick(event) {
-  console.log('id: ', event.target.id);  // to track the number of click
+function handleClick(event) {  // to track the number of click
   for (var i = 0; i < imageToDisplay.length; i++) {
-    console.log('*******Array**********', imageToDisplay[1]);
-    console.log('Image To Displayed: ', imageList[imageToDisplay[1]].imageName);
     if (event.target.id === imageList[imageToDisplay[i]].imageName) {
-      console.log('INSIDE EVENT: ', imageList[imageToDisplay[i]].imageName);
       imageList[imageToDisplay[i]].numClick++;
       clickPerImage++;
       var remEl =  document.getElementById('randomImage');
@@ -92,30 +86,73 @@ function handleClick(event) {
         remEl.removeChild(remEl.firstChild);
       }
       if (clickPerImage === 25) {
-        var remEl = document.getElementById('imgPick');
+        var remEl = document.getElementById('randomImage');
         while (remEl.firstChild) {
           remEl.removeChild(remEl.firstChild);
         }
+        console.log('hello');
         container.removeEventListener('click', handleClick);
         var secEl = document.createElement('section');
         secEl.id = 'result';
         var h2El = document.createElement('h2');
         h2El.textContent = 'result';
         secEl.appendChild(h2El);
-        var UlEl = document.createElement('ul');
-        for (var i = 0; i < imageList.lengh; i++) {
+        var ulEl = document.createElement('ul');
+        for (var i = 0; i < imageList.length; i++) {
           var liEl = document.createElement('li');
-          liEl = imageList[i].numClick + ' votes for ' + imageList[i].imageName + ' . ';
-          UlEl.appendChild(liEl);
+          console.log('middle');
+          liEl.textContent = imageList[i].numClick + ' votes for ' + imageList[i].imageName + ' . ';
+          ulEl.appendChild(liEl);
         }
-        secEl.appendChild(UlEl);
+        secEl.appendChild(ulEl);
         container.appendChild(secEl);
+        console.log('bye');
       } else {
         render();
       }
     }
   }
 }
+
+function chartResutl() {
+  var result = document.getElementById('resultChart');
+  result.style.display = 'bars';
+  container.parentNode.removeChild(container);
+  var ctx = document.getElementById(myChart);
+  var chartL = [];
+  var chartD = [];
+  for (var i = 0; i < imageDisplay.length; i++) {
+    chartL.push(imageDisplay[i].imageName);
+    chartD.push(imageDisplay[i].numClick);
+  }
+  var newChart = new Chart(ctx, {
+    type: 'polarArea',
+    data: {
+      labels: chartL,
+      datasets: [{
+        label: '# of clicks',
+        data:chartD,
+        backgroundColor: [
+          'rgb(255,255,255)'
+        ],
+        borderColor: [
+
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+}
+
 container.addEventListener('click', handleClick);
 // from here random images
 // from here 25 clicks
