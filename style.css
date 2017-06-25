@@ -1,29 +1,40 @@
 body {
   width: 980px;
-  margin: 50px;
+  margin: 50px auto;
+  background-color: black;
+  color: white;
 }
 div.container {
   margin: auto;
-
+  align-content: center;
+}
+img {
+  height: 200px;
+  border-color: yellow;
+  border-radius: 3px;
+  padding: 5px;
+  margin-left: 30px;
+  background: #C9E4CA;
 }
 div {
   margin: 80px;
 }
 
 header {
-  background-color: #CAC3C4;
   padding-bottom: 20px;
   padding-top: 20px;
 }
 h1 {
-  font-family: 'Alan';
-  font-size: 60px;
+  font-family: 'Abril Fatface', cursive;
+  font-size: 80px;
   text-align: center;
-  color: #801725;
+  color: #55828B;
+  text-shadow: #55828B;
 }
 h2 {
-  font-size: 20px;
+  font-size: 30px;
   margin: auto 40px;
+  font-family: monospace;
 }
 p {
   margin: auto 40px;
@@ -31,7 +42,7 @@ p {
 div.images {
   position: relative;
   width: auto;
-  height: 400px;
+  height: 200px;
   margin: auto;
   background-color: #247BA0;
 }

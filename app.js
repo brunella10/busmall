@@ -86,7 +86,7 @@ function handleClick(event) {  // to track the number of click
         remEl.removeChild(remEl.firstChild);
       }
       if (clickPerImage === 25) {
-        var remEl = document.getElementById('randomImage');
+        // var remEl = document.getElementById('randomImage');
         while (remEl.firstChild) {
           remEl.removeChild(remEl.firstChild);
         }
@@ -117,28 +117,64 @@ function handleClick(event) {  // to track the number of click
 
 function chartResult() {
   console.log('chartResult');
-  var result = document.getElementById('resultChart');
-  result.style.display = 'bars';
   container.parentNode.removeChild(container);
-  var ctx = document.getElementById(myChart);
+  var ctx = document.getElementById('myChart');
   var chartL = [];
   var chartD = [];
-  for (var i = 0; i < imageToDisplay.length; i++) {
-    chartL.push(imageToDisplay[i].imageName);
-    chartD.push(imageToDisplay[i].numClick);
+  for (var i = 0; i < imageList.length; i++) {
+    chartL.push(imageList[i].imageName);
+    chartD.push(imageList[i].numClick);
   }
   var newChart = new Chart(ctx, {
-    type: 'polarArea',
+    type: 'bar',
     data: {
       labels: chartL,
       datasets: [{
         label: '# of clicks',
         data:chartD,
         backgroundColor: [
-          'rgb(255,255,255)'
+          'rgba(255, 99, 132, 0.75)',
+          'rgba(54, 162, 235, 0.75)',
+          'rgba(255, 206, 86, 0.75)',
+          'rgba(75, 192, 192, 0.75)',
+          'rgba(153, 102, 255, 0.75)',
+          'rgba(255, 159, 64, 0.75)',
+          'rgba(255, 99, 132, 0.75)',
+          'rgba(54, 162, 235, 0.75)',
+          'rgba(255, 206, 86, 0.75)',
+          'rgba(75, 192, 192, 0.75)',
+          'rgba(153, 102, 255, 0.75)',
+          'rgba(255, 159, 64, 0.75)',
+          'rgba(255, 99, 132, 0.75)',
+          'rgba(54, 162, 235, 0.75)',
+          'rgba(255, 206, 86, 0.75)',
+          'rgba(75, 192, 192, 0.75)',
+          'rgba(153, 102, 255, 0.75)',
+          'rgba(255, 159, 64, 0.75)',
+          'rgba(255, 99, 132, 0.75)',
+          'rgba(54, 162, 235, 0.75)'
         ],
         borderColor: [
-
+          'rgba(255,99,132,1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)',
+          'rgba(255,99,132,1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)',
+          'rgba(255,99,132,1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)',
+          'rgba(255,99,132,1)',
+          'rgba(54, 162, 235, 1)'
         ],
         borderWidth: 1
       }]
@@ -156,17 +192,4 @@ function chartResult() {
 }
 
 container.addEventListener('click', handleClick);
-// from here random images
-// from here 25 clicks
-// function twentyFiveClicks() {
-//   var clicksPerUser = 25;
-//   var option = 25;
-//
-//   while (clicksPerUser > 0) {
-//     if ()
-//
-//   }
-// }
-// new imageList();
-// render();
-// imageDisplay.addEventListener(click,handleClick);
+//chart colors C9E4CAligth green 87BBA2medium green 55828Bmedium dark bluish 3B6064medium green 364958 green
