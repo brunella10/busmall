@@ -107,7 +107,7 @@ function handleClick(event) {  // to track the number of click
         secEl.appendChild(ulEl);
         container.appendChild(secEl);
         console.log('bye');
-        chartResult();
+        // chartResult();
       } else {
         render();
       }

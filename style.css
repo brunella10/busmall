@@ -6,6 +6,9 @@ div.container {
   margin: auto;
 
 }
+img {
+  width: 200px;
+}
 div {
   margin: 80px;
 }
