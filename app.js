@@ -1,10 +1,5 @@
 'use strict';
 
-var imageList = [];
-var imageDisplayed = [];
-var imageToDisplay = [];
-var clickPerImage = 0;
-var container = document.getElementById('randomImage');
 // image name, time displayed, number of click per image
 function userClicks(imageName, imageNumber) {
   this.imageNumber = imageNumber; //information list image
@@ -13,27 +8,32 @@ function userClicks(imageName, imageNumber) {
   this.numDisplay = 0;// how many times did the user saw the image
   imageList.push(this);
 }
-
-new userClicks ('bag', 'images/bag.jpg');
-new userClicks ('banana', 'images/banana.jpg');
-new userClicks ('bathroom', 'images/bathroom.jpg');
-new userClicks ('boots', 'images/boots.jpg');
-new userClicks ('breakfast', 'images/breakfast.jpg');
-new userClicks ('bubblegum', 'images/bubblegum.jpg');
-new userClicks ('chair', 'images/chair.jpg');
-new userClicks ('cthulhu', 'images/cthulhu.jpg');
-new userClicks ('dog_duck', 'images/dog-duck.jpg');
-new userClicks ('dragon', 'images/dragon.jpg');
-new userClicks ('pen', 'images/pen.jpg');
-new userClicks ('pet_sweep', 'images/pet-sweep.jpg');
-new userClicks ('scissors', 'images/scissors.jpg');
-new userClicks ('shark', 'images/shark.jpg');
-new userClicks ('sweep_baby', 'images/sweep.png');
-new userClicks ('tauntaun', 'images/tauntaun.jpg');
-new userClicks ('unicorn', 'images/unicorn.jpg');
-new userClicks ('usb', 'images/usb.gif');
-new userClicks ('water_can', 'images/water-can.jpg');
-new userClicks ('wine_glass', 'images/wine-glass.jpg');
+function createImages() {
+  if(localStorage.getItem('imageList')){
+    imageList = JSON.parse(localStorage.getItem('imageList'));
+  } else {
+    new userClicks ('bag', 'images/bag.jpg');
+    new userClicks ('banana', 'images/banana.jpg');
+    new userClicks ('bathroom', 'images/bathroom.jpg');
+    new userClicks ('boots', 'images/boots.jpg');
+    new userClicks ('breakfast', 'images/breakfast.jpg');
+    new userClicks ('bubblegum', 'images/bubblegum.jpg');
+    new userClicks ('chair', 'images/chair.jpg');
+    new userClicks ('cthulhu', 'images/cthulhu.jpg');
+    new userClicks ('dog_duck', 'images/dog-duck.jpg');
+    new userClicks ('dragon', 'images/dragon.jpg');
+    new userClicks ('pen', 'images/pen.jpg');
+    new userClicks ('pet_sweep', 'images/pet-sweep.jpg');
+    new userClicks ('scissors', 'images/scissors.jpg');
+    new userClicks ('shark', 'images/shark.jpg');
+    new userClicks ('sweep_baby', 'images/sweep.png');
+    new userClicks ('tauntaun', 'images/tauntaun.jpg');
+    new userClicks ('unicorn', 'images/unicorn.jpg');
+    new userClicks ('usb', 'images/usb.gif');
+    new userClicks ('water_can', 'images/water-can.jpg');
+    new userClicks ('wine_glass', 'images/wine-glass.jpg');
+  }
+}
 // random image generator
 
 function getRandomImage(){
@@ -72,10 +72,6 @@ function render(){
   }
 }
 
-render();
-
-var oneClicks = 0;
-
 function handleClick(event) {  // to track the number of click
   for (var i = 0; i < imageToDisplay.length; i++) {
     if (event.target.id === imageList[imageToDisplay[i]].imageName) {
@@ -108,6 +104,7 @@ function handleClick(event) {  // to track the number of click
         container.appendChild(secEl);
         console.log('bye');
         chartResult();
+        localStorage.setItem('imageList', JSON.stringify(imageList));
       } else {
         render();
       }
@@ -191,5 +188,13 @@ function chartResult() {
   });
 }
 
+var imageList = [];
+var imageDisplayed = [];
+var imageToDisplay = [];
+var clickPerImage = 0;
+var oneClicks = 0;
+var container = document.getElementById('randomImage');
+createImages();
+render();
 container.addEventListener('click', handleClick);
 //chart colors C9E4CAligth green 87BBA2medium green 55828Bmedium dark bluish 3B6064medium green 364958 green
