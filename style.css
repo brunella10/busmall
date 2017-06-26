@@ -2,7 +2,6 @@ body {
   width: 980px;
   margin: 50px auto;
   background-color: black;
-  background-image: url('images/triangle.png');
   color: white;
 }
 div.container {
