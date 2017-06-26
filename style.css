@@ -2,6 +2,7 @@ body {
   width: 980px;
   margin: 50px auto;
   background-color: black;
+  background-image: url('images/triangle.png');
   color: white;
 }
 div.container {
@@ -10,10 +11,11 @@ div.container {
 }
 img {
   height: 200px;
+  width: 200px;
   border-color: yellow;
   border-radius: 3px;
-  padding: 5px;
-  margin-left: 30px;
+  padding: 15px;
+  /*margin: auto 30px;*/
   background: #C9E4CA;
 }
 div {
